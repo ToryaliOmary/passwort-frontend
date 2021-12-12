@@ -8,8 +8,8 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <router-link class="nav-link" to = "/"> Home </router-link>
-          <router-link class="nav-link" to ="/about"> About </router-link>
-          <router-link class="nav-link" to ="/passwords"> Passwords </router-link>
+          <router-link class="nav-link" to ="/about"> Passwords </router-link>
+          <router-link class="nav-link" to ="/NewPassword"> NewPassword </router-link>
         </div>
       </div>
     </div>

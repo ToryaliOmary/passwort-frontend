@@ -1,9 +1,16 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2> Bitte loggen Sie sich ein!</h2>
+    <p></p>
+    <p></p>
+    <input v-model="test123" placeholder="Passwort" />
 
-    <button type="button" class="btn btn-primary">Primary</button>
-
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p><button type="button" class="btn btn-primary">Login</button></p>
   </div>
 </template>
 
