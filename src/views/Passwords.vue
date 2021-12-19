@@ -3,16 +3,62 @@
     <img alt="NewLogo" src="../assets/NewLogo.png">
     <h1>Manage jetzt sicher und verschlüsselt deine Kontodaten.</h1>
     <h1>Tippe hier!</h1>
-    <Accordion> </Accordion>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Privat
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>
+                  <div class = "col" v-for="passwort in password" :key="passwort.id">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Webseite</th>
+                      <th scope="col">Passwort</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <th scope="row">{{ passwort.id }}</th>
+                      <td>{{ passwort.Webseite}}</td>
+                      <td>{{ passwort.Passwort }}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                </strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <a href="http://localhost:3000/NewPassword">New Password</a>
-  </div>
 </template>
 
 <script>
-
-import Accordion from '@/components/Accordion'
 export default {
   name: 'Passwords',
-  components: { Accordion }
+  data () {
+    return {
+      password: []
+    }
+  },
+  mounted () {
+    const request = {
+      method: 'GET',
+      redirect: 'follow'
+    }
+    fetch('http://localhost:8080/api/passwort', request)
+      .then(response => response.json())
+      .then(result => result.forEach(passwort => {
+        this.password.push(passwort)
+      }))
+      .catch(error => console.log('error', error))
+  }
 }
 </script>
