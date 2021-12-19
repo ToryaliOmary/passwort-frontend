@@ -49,11 +49,12 @@ export default {
     }
   },
   mounted () {
-    const request = {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/passwort'
+    const requestOption = {
       method: 'GET',
       redirect: 'follow'
     }
-    fetch('http://localhost:8080/api/passwort', request)
+    fetch(endpoint, requestOption)
       .then(response => response.json())
       .then(result => result.forEach(passwort => {
         this.password.push(passwort)
