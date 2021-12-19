@@ -18,15 +18,15 @@
                     <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Webseite</th>
+                      <th scope="col">Website</th>
                       <th scope="col">Passwort</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <th scope="row">{{ passwort.id }}</th>
-                      <td>{{ passwort.Webseite}}</td>
-                      <td>{{ passwort.Passwort }}</td>
+                      <td>{{ passwort.id }}</td>
+                      <td>{{ passwort.website}}</td>
+                      <td>{{ passwort.passwort }}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/passwort'
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/passwort'
     const requestOption = {
       method: 'GET',
       redirect: 'follow'
@@ -63,3 +63,6 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+</style>
