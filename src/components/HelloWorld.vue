@@ -10,7 +10,9 @@
     <p></p>
     <p></p>
     <p></p>
-    <p><button type="button" class="btn btn-primary">Login</button></p>
+    <form method="get" action="/about">
+      <button col="blue" type="submit">Login</button>
+    </form>
   </div>
 </template>
 

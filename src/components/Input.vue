@@ -15,7 +15,7 @@
       <input type="password" class="form-control" id="passwordCheck" v-model="passwortCheck">
     </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary" @click.prevent="createPassword">Submit</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="createPassword" @click="checkPasswords">Bestätigen</button>
     </div>
   </form>
 </template>
@@ -56,6 +56,16 @@ export default {
 
       fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
+    },
+    checkPasswords () {
+      const pw1 = document.getElementById('password').value
+      const pw2 = document.getElementById('passwordCheck').value
+
+      if (pw1 !== pw2) {
+        alert('Passwörter müssen gleich sein!')
+        console.log('falsches PW')
+      }
+      return true
     }
   }
 }

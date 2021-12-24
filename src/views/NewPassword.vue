@@ -9,6 +9,11 @@
     <p></p>
 
     <Input> </Input>
+
+    <p></p>
+    <form method="get" action="/about">
+      <button col="blue" type="submit">Abbruch</button>
+    </form>
   </div>
 </template>
 
