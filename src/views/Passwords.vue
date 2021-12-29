@@ -13,33 +13,36 @@
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <strong>
-                  <div class = "col" v-for="passwort in password" :key="passwort.id">
                   <table class="table">
                     <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      <th scope="col"></th>
                       <th scope="col">Website</th>
                       <th scope="col">Passwort</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>{{ passwort.id }}</td>
+                    <tr class = "col" v-for="passwort in password" :key="passwort.id">
+                      <ts>{{ }}</ts>
                       <td>{{ passwort.website}}</td>
                       <td>{{ passwort.passwort }}</td>
                     </tr>
                     </tbody>
                   </table>
-                  </div>
                 </strong>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <form method="get" action="/passwords">
-      <button col="blue" type="submit">Zurück</button>
-      </form>
+  <p> </p>
+  <form method="get" action="/NewPassword">
+    <button type="submit" class="btn btn-primary">Passwort hinzufügen</button>
+  </form>
+  <p> </p>
+  <form method="get" action="/DeletePassword">
+    <button type="submit" class="btn btn-primary">Passwort löschen</button>
+  </form>
 </template>
 
 <script>

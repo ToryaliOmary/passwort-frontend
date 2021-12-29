@@ -7,7 +7,7 @@
     <Input> </Input>
     <p></p>
     <form method="get" action="/passwords">
-      <button col="blue" type="submit">Abbruch</button>
+      <button col="blue" type="submit" class="btn btn-primary">Zurück</button>
     </form>
   </div>
 </template>

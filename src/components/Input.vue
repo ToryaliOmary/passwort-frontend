@@ -3,23 +3,23 @@
     <p> </p>
     <div class=" row-cols-md-6" >
       <label for="webseite" class="form-label">Webseite</label>
-      <input type="website" class="form-control" id="webseite" v-model="webseite">
+      <input type="website" class="form-control" id="webseite" v-model="webseite" required>
     </div>
     <div class="col-md-6">
       <label for="inputPassword" class="form-label">Passwort</label>
-      <input type="text" class="form-control" id="inputPassword" v-model="passwort">
+      <input type="text" class="form-control" id="inputPassword" v-model="passwort" required>
     </div>
     <div class="col-md-6">
       <label for="passwortCheck" class="form-label">Passwort-Check</label>
-      <input type="text" class="form-control" id="passwordCheck" v-model="passwortCheck">
+      <input type="text" class="form-control" id="passwordCheck" v-model="passwortCheck" required>
     </div>
     <div class="row-cols-md-6">
       <label for="arbeitsbereich" class="form-label">Arbeitsbereich</label>
       <input type="text" class="form-control" id="arbeitsbereich" v-model="arbeitsbereich">
     </div>
-    <div class="col-12">
+    <form class="col-12" action="/Passwords">
       <button type="submit" class="btn btn-primary" @click.prevent="checkPasswords" >Bestätigen</button>
-    </div>
+    </form>
   </form>
 </template>
 
@@ -36,6 +36,7 @@ export default {
     }
   },
   methods: {
+    // Prüfung ob beide Passwörter übereinstimmen und dass das Website Feld ausgefüllt ist
     checkPasswords () {
       const pw1 = document.getElementById('inputPassword').value
       const pw2 = document.getElementById('passwordCheck').value
@@ -44,28 +45,20 @@ export default {
       if (website !== '') {
         if (pw1 !== pw2) {
           alert('Passwörter müssen gleich sein!')
-          console.log('falsches PW')
           return false
         } else if (pw1 === '' || pw2 === 'null') {
-          alert('Leeres Passwortfeld. Bitte Felder befüllen!')
-          console.log('leeres Passwortfeld')
           return false
         } else if (pw1 === pw2) {
           this.createPassword()
           return true
         }
       } else {
-        alert('leeres Webseitenfeld.!')
-        console.log('falsches PW')
+        alert('Bitte alle Felder ausfüllen!')
         return false
       }
     },
+    // Passwort wird erstellt
     createPassword () {
-      console.log(this.webseite)
-      console.log(this.passwort)
-      console.log(this.passwortCheck)
-      console.log(this.arbeitsbereich)
-
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/passwort'
       const headers = new Headers()
       headers.append('Content-Type', 'application/json')
@@ -83,6 +76,9 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requestOptions)
+        .then(() => {
+          this.$router.push('/passwords') // Nach Erstellung des Passwortes wird man zurückgeworfen auf die Password-Seite
+        })
         .catch(error => console.log('error', error))
     }
   }
