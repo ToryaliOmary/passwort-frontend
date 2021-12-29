@@ -2,14 +2,9 @@
   <div class="NewPassword">
     <img alt="NewLogo" src="../assets/NewLogo.png">
     <p></p>
-    <p></p>
     <h1> Erstellen Sie hier ein neues Passwort</h1>
     <p></p>
-    <h2> Wälen Sie dazu den nötigen Arbeitsbereich aus</h2>
-    <p></p>
-
     <Input> </Input>
-
     <p></p>
     <form method="get" action="/about">
       <button col="blue" type="submit">Abbruch</button>
