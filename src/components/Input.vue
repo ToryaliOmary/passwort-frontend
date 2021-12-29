@@ -2,13 +2,13 @@
   <form class="row g-3">
     <p> </p>
     <div class="center" >
-      <label for="website" class="form-label">Webseite</label>
-      <input type="website" class="form-control" id="website" v-model="webseite">
+      <label for="webseite" class="form-label">Webseite</label>
+      <input type="website" class="form-control" id="webseite" v-model="webseite">
     </div>
     <p> </p>
     <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Passwort</label>
-      <input type="password" class="form-control" id="password" v-model="passwort">
+      <label for="inputPassword" class="form-label">Passwort</label>
+      <input type="password" class="form-control" id="inputPassword" v-model="passwort">
     </div>
     <div class="col-md-6">
       <label for="passwortCheck" class="form-label">Passwort-Check</label>
@@ -37,6 +37,8 @@ export default {
       console.log(this.webseite)
       console.log(this.passwort)
       console.log(this.passwortCheck)
+      console.log(this.arbeitsbereich)
+      this.checkPasswords()
 
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/passwort'
       const headers = new Headers()
@@ -44,7 +46,8 @@ export default {
 
       const playload = JSON.stringify({
         webseite: this.webseite,
-        passwort: this.passwort
+        passwort: this.passwort,
+        arbeitsbereich: this.arbeitsbereich
       })
 
       const requestOptions = {

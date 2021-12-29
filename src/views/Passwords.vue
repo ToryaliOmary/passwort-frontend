@@ -20,6 +20,7 @@
                       <th scope="col">#</th>
                       <th scope="col">Website</th>
                       <th scope="col">Passwort</th>
+                      <th scope="col">Arbeitsbereich</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,7 @@
                       <td>{{ passwort.id }}</td>
                       <td>{{ passwort.website}}</td>
                       <td>{{ passwort.passwort }}</td>
+                      <td>{{ passwort.arbeitsbereich }}</td>
                     </tr>
                     </tbody>
                   </table>

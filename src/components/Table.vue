@@ -5,6 +5,7 @@
       <th scope="col">#</th>
       <th scope="col">Webseite</th>
       <th scope="col">Passwort</th>
+      <th scope="col">Arbeitsbereich</th>
     </tr>
     </thead>
     <tbody>
