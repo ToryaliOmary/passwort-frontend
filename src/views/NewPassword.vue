@@ -6,7 +6,7 @@
     <p></p>
     <Input> </Input>
     <p></p>
-    <form method="get" action="/about">
+    <form method="get" action="/passwords">
       <button col="blue" type="submit">Abbruch</button>
     </form>
   </div>

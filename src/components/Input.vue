@@ -39,14 +39,25 @@ export default {
     checkPasswords () {
       const pw1 = document.getElementById('inputPassword').value
       const pw2 = document.getElementById('passwordCheck').value
+      const website = document.getElementById('webseite').value
 
-      if (pw1 !== pw2) {
-        alert('Passwörter müssen gleich sein!')
+      if (website !== '') {
+        if (pw1 !== pw2) {
+          alert('Passwörter müssen gleich sein!')
+          console.log('falsches PW')
+          return false
+        } else if (pw1 === '' || pw2 === 'null') {
+          alert('Leeres Passwortfeld. Bitte Felder befüllen!')
+          console.log('leeres Passwortfeld')
+          return false
+        } else if (pw1 === pw2) {
+          this.createPassword()
+          return true
+        }
+      } else {
+        alert('leeres Webseitenfeld.!')
         console.log('falsches PW')
         return false
-      } else {
-        this.createPassword()
-        return true
       }
     },
     createPassword () {
@@ -60,7 +71,7 @@ export default {
       headers.append('Content-Type', 'application/json')
 
       const playload = JSON.stringify({
-        webseite: this.webseite,
+        website: this.webseite,
         passwort: this.passwort,
         arbeitsbereich: this.arbeitsbereich
       })
@@ -72,10 +83,6 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requestOptions)
-        .then(response => response.json())
-        .then(result => result.forEach(passwort => {
-          this.password.push(passwort)
-        }))
         .catch(error => console.log('error', error))
     }
   }

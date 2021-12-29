@@ -5,12 +5,11 @@
     <p></p>
     <p></p>
     <input v-model="test123" placeholder="Passwort" />
-
     <p></p>
     <p></p>
     <p></p>
     <p></p>
-    <form method="get" action="/about">
+    <form method="get" action="/passwords">
       <button col="blue" type="submit">Login</button>
     </form>
   </div>

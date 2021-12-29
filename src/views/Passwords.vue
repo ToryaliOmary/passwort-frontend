@@ -20,7 +20,6 @@
                       <th scope="col">#</th>
                       <th scope="col">Website</th>
                       <th scope="col">Passwort</th>
-                      <th scope="col">Arbeitsbereich</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,7 +27,6 @@
                       <td>{{ passwort.id }}</td>
                       <td>{{ passwort.website}}</td>
                       <td>{{ passwort.passwort }}</td>
-                      <td>{{ passwort.arbeitsbereich }}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -39,7 +37,9 @@
           </div>
         </div>
       </div>
-    <a href="http://localhost:3000/NewPassword">New Password</a>
+      <form method="get" action="/passwords">
+      <button col="blue" type="submit">Zurück</button>
+      </form>
 </template>
 
 <script>
