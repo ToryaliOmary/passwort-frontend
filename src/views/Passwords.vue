@@ -19,13 +19,15 @@
                       <th scope="col"></th>
                       <th scope="col">Website</th>
                       <th scope="col">Passwort</th>
+                      <th scope="col">Arbeitsbereich</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class = "col" v-for="passwort in password" :key="passwort.id">
-                      <ts>{{ }}</ts>
-                      <td>{{ passwort.website}}</td>
-                      <td>{{ passwort.passwort }}</td>
+                    <tr class = "col" v-for="passwort in password" :key="passwort.arbeitsbereich">
+                        <ts>{{ }}</ts>
+                        <td>{{ passwort.website}}</td>
+                        <td>{{ passwort.passwort }}</td>
+                        <td>{{ passwort.arbeitsbereich}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -34,6 +36,36 @@
             </div>
           </div>
         </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingtwo">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">            Beruf
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Website</th>
+                  <th scope="col">Passwort</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class = "col" v-for="passwort in password" :key="passwort.id">
+                  <ts>{{ }}</ts>
+                  <td>{{ passwort.website}}</td>
+                  <td>{{ passwort.passwort }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
   <p> </p>
   <form method="get" action="/NewPassword">
@@ -65,6 +97,10 @@ export default {
         this.password.push(passwort)
       }))
       .catch(error => console.log('error', error))
+  },
+  isPrivat () {
+    const arbeitsbereich = document.getElementById('arbeitsbereich').value
+    return arbeitsbereich === 'Privat'
   }
 }
 </script>

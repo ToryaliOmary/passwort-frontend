@@ -7,11 +7,11 @@
     </div>
     <div class="col-md-6">
       <label for="inputPassword" class="form-label">Passwort</label>
-      <input type="text" class="form-control" id="inputPassword" v-model="passwort" required>
+      <input type="password" class="form-control" id="inputPassword" v-model="passwort" required>
     </div>
     <div class="col-md-6">
       <label for="passwortCheck" class="form-label">Passwort-Check</label>
-      <input type="text" class="form-control" id="passwordCheck" v-model="passwortCheck" required>
+      <input type="password" class="form-control" id="passwordCheck" v-model="passwortCheck" required>
     </div>
     <div class="row-cols-md-6">
       <label for="arbeitsbereich" class="form-label">Arbeitsbereich</label>
