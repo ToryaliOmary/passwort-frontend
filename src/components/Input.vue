@@ -15,10 +15,10 @@
     </div>
     <div class="row-cols-md-6">
       <label for="arbeitsbereich" class="form-label">Arbeitsbereich</label>
-      <input type="text" class="form-control" id="arbeitsbereich" v-model="arbeitsbereich">
+      <input type="text" class="form-control" id="arbeitsbereich" v-model="arbeitsbereich" required>
     </div>
     <form class="col-12" action="/Passwords">
-      <button type="submit" class="btn btn-primary" @click.prevent="checkPasswords" >Bestätigen</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="validateInput()" >Bestätigen</button>
     </form>
   </form>
 </template>
@@ -36,6 +36,25 @@ export default {
     }
   },
   methods: {
+    validateInput () {
+      const pw1 = document.getElementById('inputPassword').value
+      const pw2 = document.getElementById('passwordCheck').value
+      const website = document.getElementById('webseite').value
+      const arbeitsbereich = document.getElementById('arbeitsbereich').value
+      if (website !== '') {
+        if (pw1 !== '' && pw2 !== '') {
+          if (arbeitsbereich !== '') {
+            return this.checkPasswords()
+          } else {
+            alert('Bitte prüfen Sie  die Eingaben. Jedes Feld muss befüllt werden!')
+          }
+        } else {
+          alert('Bitte prüfen Sie  die Eingaben. Jedes Feld muss befüllt werden!')
+        }
+      } else {
+        alert('Bitte prüfen Sie  die Eingaben. Jedes Feld muss befüllt werden!')
+      }
+    },
     // Prüfung ob beide Passwörter übereinstimmen und dass das Website Feld ausgefüllt ist
     checkPasswords () {
       const pw1 = document.getElementById('inputPassword').value
@@ -49,8 +68,7 @@ export default {
         } else if (pw1 === '' || pw2 === 'null') {
           return false
         } else if (pw1 === pw2) {
-          this.createPassword()
-          return true
+          return this.createPassword()
         }
       } else {
         alert('Bitte alle Felder ausfüllen!')
@@ -76,9 +94,6 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requestOptions)
-        .then(() => {
-          this.$router.push('/passwords') // Nach Erstellung des Passwortes wird man zurückgeworfen auf die Password-Seite
-        })
         .catch(error => console.log('error', error))
     }
   }
