@@ -18,7 +18,7 @@
       <input type="text" class="form-control" id="arbeitsbereich" v-model="arbeitsbereich" required>
     </div>
     <form class="col-12" action="/Passwords">
-      <button type="submit" class="btn btn-primary" @click.prevent="validateInput()" >Bestätigen</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="validateInput(passwort.id)" >Bestätigen</button>
     </form>
   </form>
 </template>
@@ -41,6 +41,7 @@ export default {
       const pw2 = document.getElementById('passwordCheck').value
       const website = document.getElementById('webseite').value
       const arbeitsbereich = document.getElementById('arbeitsbereich').value
+      console.log(arbeitsbereich)
       if (website !== '') {
         if (pw1 !== '' && pw2 !== '') {
           if (arbeitsbereich !== '') {
@@ -59,20 +60,12 @@ export default {
     checkPasswords () {
       const pw1 = document.getElementById('inputPassword').value
       const pw2 = document.getElementById('passwordCheck').value
-      const website = document.getElementById('webseite').value
-
-      if (website !== '') {
-        if (pw1 !== pw2) {
-          alert('Passwörter müssen gleich sein!')
-          return false
-        } else if (pw1 === '' || pw2 === 'null') {
-          return false
-        } else if (pw1 === pw2) {
-          return this.createPassword()
-        }
-      } else {
-        alert('Bitte alle Felder ausfüllen!')
-        return false
+      if (pw1 !== pw2) {
+        return alert('Passwörter müssen gleich sein!')
+      } else if (pw1 === '' || pw2 === 'null') {
+        return alert('Passwörter müssen gleich sein!')
+      } else if (pw1 === pw2) {
+        return this.createPassword()
       }
     },
     // Passwort wird erstellt
@@ -94,6 +87,9 @@ export default {
         redirect: 'follow'
       }
       fetch(endpoint, requestOptions)
+        .then(() => {
+          this.$router.push('/passwords') // Nach Erstellung des Passwortes wird man zurückgeworfen auf die Password-Seite
+        })
         .catch(error => console.log('error', error))
     }
   }

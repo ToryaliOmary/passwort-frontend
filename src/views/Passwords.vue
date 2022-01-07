@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class = "col" v-for="passwort in isPrivat()" :key="passwort.id">
+                    <tr class = "col" v-for="passwort in isPrivat()" :key="passwort.arbeitsbereich">
                         <ts>{{ }}</ts>
                         <td>{{ passwort.website}}</td>
                         <td>{{ passwort.passwort }}</td>
@@ -53,7 +53,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class = "col" v-for="passwort in isBeruf()" :key="passwort.id">
+                <tr class = "col" v-for="passwort in isBeruf()" :key="passwort.arbeitsbereich">
                   <ts>{{ }}</ts>
                   <td>{{ passwort.website}}</td>
                   <td>{{ passwort.passwort }}</td>
@@ -84,7 +84,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class = "col" v-for="passwort in isSonstiges()" :key="passwort.id">
+                <tr class = "col" v-for="passwort in isSonstiges()" :key="passwort.arbeitsbereich">
                   <ts>{{ }}</ts>
                   <td>{{ passwort.website}}</td>
                   <td>{{ passwort.passwort }}</td>
