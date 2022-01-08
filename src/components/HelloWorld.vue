@@ -4,13 +4,11 @@
     <h2> Bitte loggen Sie sich ein!</h2>
     <p></p>
     <p></p>
-    <input v-model="test123" placeholder="Passwort" />
-    <p></p>
-    <p></p>
+    <input type="password" id="initial" v-model="initial" required>
     <p></p>
     <p></p>
     <form method="get" action="/passwords">
-      <button col="blue" type="submit">Login</button>
+      <button col="blue" type="submit" @click.prevent="checkInitial()">Login</button>
     </form>
   </div>
 </template>
@@ -18,8 +16,15 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  methods: {
+    checkInitial () {
+      const eingabe = document.getElementById('initial').value
+      if (eingabe === process.env.VUE_APP_INITIAL_KENNWORT) {
+        this.$router.push('/passwords')
+      } else {
+        alert('Falsches Passwort. Du Hund')
+      }
+    }
   }
 }
 </script>

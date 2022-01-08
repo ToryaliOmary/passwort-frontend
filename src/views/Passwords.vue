@@ -105,6 +105,10 @@
   <form method="get" action="/DeletePassword">
     <button type="submit" class="btn btn-primary">Passwort löschen</button>
   </form>
+  <p> </p>
+  <form method="get" action="/">
+    <button type="submit" class="btn btn-primary">Abmelden</button>
+  </form>
 </template>
 
 <script>
