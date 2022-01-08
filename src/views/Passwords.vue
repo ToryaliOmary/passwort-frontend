@@ -10,7 +10,7 @@
                 Privat
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <strong>
                   <table class="table">
@@ -24,7 +24,7 @@
                     <tbody>
                     <tr class = "col" v-for="passwort in isPrivat()" :key="passwort.arbeitsbereich">
                         <ts>{{ }}</ts>
-                        <td>{{ passwort.website}}</td>
+                        <td class="text">{{ passwort.website}}</td>
                         <td>{{ passwort.passwort }}</td>
                     </tr>
                     </tbody>
@@ -41,7 +41,7 @@
             Beruf
           </button>
         </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>
               <table class="table">
@@ -55,8 +55,8 @@
                 <tbody>
                 <tr class = "col" v-for="passwort in isBeruf()" :key="passwort.arbeitsbereich">
                   <ts>{{ }}</ts>
-                  <td>{{ passwort.website}}</td>
-                  <td>{{ passwort.passwort }}</td>
+                  <td class="text">{{ passwort.website}}</td>
+                  <td >{{ passwort.passwort }}</td>
                 </tr>
                 </tbody>
               </table>
@@ -72,7 +72,7 @@
             Sonstiges
           </button>
         </h2>
-        <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>
               <table class="table">
