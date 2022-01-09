@@ -22,7 +22,7 @@ export default {
       if (eingabe === process.env.VUE_APP_INITIAL_KENNWORT) {
         this.$router.push('/passwords')
       } else {
-        alert('Falsches Passwort. Du Hund')
+        alert('Falsches Passwort. Bitte überprüfen Sie ihre Eingabe!')
       }
     }
   }
