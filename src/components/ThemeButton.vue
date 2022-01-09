@@ -1,20 +1,11 @@
 <template>
   <div class="container-center">
     <div class="card">
-      <input
-        @change="toggleTheme"
-        id="checkbox"
-        type="checkbox"
-        class="switch-checkbox"
-      />
-      <label for="checkbox" class="switch-label">
-        <span> 🌙 </span>
-        <span> ☀️</span>
+        <span> Mit dem Emory Passwortmanager sind Ihre Daten besonders sicher! </span>
         <div
           class="switch-toggle"
           :class="{ 'switch-toggle-checked': userTheme === 'dark-theme' }"
         ></div>
-      </label>
     </div>
   </div>
 </template>

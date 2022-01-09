@@ -22,7 +22,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class = "col" v-for="passwort in password" :key="passwort.id">
+                  <tr class = "col" v-for="passwort in isPrivat()" :key="passwort.id">
                     <ts>{{ }}</ts>
                     <td>{{ passwort.website}}</td>
                     <td>{{ passwort.passwort }}</td>
@@ -30,6 +30,70 @@
                   </tr>
                   </tbody>
                 </table>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            Beruf
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Website</th>
+                  <th scope="col">Passwort</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class = "col" v-for="passwort in isBeruf()" :key="passwort.arbeitsbereich">
+                  <ts>{{ }}</ts>
+                  <td>{{ passwort.website}}</td>
+                  <td>{{ passwort.passwort }}</td>
+                  <d><button class="btn btn-danger" @click.prevent="removePassword(passwort.id)">Löschen</button></d>
+                </tr>
+                </tbody>
+              </table>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingthree">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Sonstiges
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Website</th>
+                  <th scope="col">Passwort</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class = "col" v-for="passwort in isSonstiges()" :key="passwort.arbeitsbereich">
+                  <ts>{{ }}</ts>
+                  <td>{{ passwort.website}}</td>
+                  <td>{{ passwort.passwort }}</td>
+                  <d><button class="btn btn-danger" @click.prevent="removePassword(passwort.id)">Löschen</button></d>
+                </tr>
+                </tbody>
+              </table>
             </strong>
           </div>
         </div>
@@ -89,6 +153,15 @@ export default {
           this.$router.push('/passwords')
         })
         .catch(error => console.log('error', error))
+    },
+    isPrivat () {
+      return this.password.filter(pw => pw.arbeitsbereich.toLowerCase() === 'privat')
+    },
+    isBeruf () {
+      return this.password.filter(pw => pw.arbeitsbereich.toLowerCase() === 'beruf')
+    },
+    isSonstiges () {
+      return this.password.filter(pw => pw.arbeitsbereich.toLowerCase() !== 'beruf' && pw.arbeitsbereich.toLowerCase() !== 'privat')
     }
   }
 }

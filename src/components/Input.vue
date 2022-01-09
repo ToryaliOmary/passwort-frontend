@@ -3,20 +3,26 @@
     <p> </p>
     <div class=" row-cols-md-6" >
       <label for="webseite" class="form-label">Webseite</label>
-      <input type="website" class="form-control" id="webseite" v-model="webseite" required>
-    </div>
-    <div class="col-md-6">
-      <label for="inputPassword" class="form-label">Passwort</label>
-      <input type="password" class="form-control" id="inputPassword" v-model="passwort" required>
-    </div>
-    <div class="col-md-6">
-      <label for="passwortCheck" class="form-label">Passwort-Check</label>
-      <input type="password" class="form-control" id="passwordCheck" v-model="passwortCheck" required>
+      <input type="website" id="webseite" v-model="webseite" required>
     </div>
     <div class="row-cols-md-6">
-      <label for="arbeitsbereich" class="form-label">Arbeitsbereich</label>
-      <input type="text" class="form-control" id="arbeitsbereich" v-model="arbeitsbereich" required>
+      <label for="inputPassword" class="form-label">Passwort</label>
+      <input type="password" id="inputPassword" v-model="passwort" required>
     </div>
+    <div class="row-cols-md-6">
+      <label for="passwortCheck" class="form-label">Passwort-Check</label>
+      <input type="password" id="passwordCheck" v-model="passwortCheck" required>
+    </div>
+      <div class="row-cols-md-6" >
+        <label class="row-cols-md-6" for="arbeitsbereich">Arbeitsbereich</label>
+        <select class="custom-select" type="text" id="arbeitsbereich" v-model="arbeitsbereich" required>
+          <option selected>Wähle Aus</option>
+          <option value="Privat">Privat</option>
+          <option value="Beruf">Beruf</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select>
+      </div>
+    <p> </p>
     <form class="col-12" action="/Passwords">
       <button type="submit" class="btn btn-primary" @click.prevent="validateInput(passwort.id)" >Bestätigen</button>
     </form>
@@ -24,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Input',
   data () {
@@ -45,7 +50,11 @@ export default {
       if (website !== '') {
         if (pw1 !== '' && pw2 !== '') {
           if (arbeitsbereich !== '') {
-            return this.checkPasswords()
+            if (arbeitsbereich === 'Privat' || arbeitsbereich === 'Beruf' || arbeitsbereich === 'Sonstiges' || arbeitsbereich !== 'Wähle Aus') {
+              return this.checkPasswords()
+            } else {
+              alert('Bitte prüfen Sie  die Eingaben. Jedes Feld muss befüllt werden!')
+            }
           } else {
             alert('Bitte prüfen Sie  die Eingaben. Jedes Feld muss befüllt werden!')
           }
@@ -54,6 +63,12 @@ export default {
         }
       } else {
         alert('Bitte prüfen Sie  die Eingaben. Jedes Feld muss befüllt werden!')
+      }
+    },
+    input () {
+      const drop = document.getElementById('arbeitsbereich').value
+      if (drop !== '') {
+        return drop
       }
     },
     // Prüfung ob beide Passwörter übereinstimmen und dass das Website Feld ausgefüllt ist
