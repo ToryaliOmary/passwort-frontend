@@ -1,3 +1,4 @@
+[![CI](https://github.com/ToryaliOmary/passwort-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/ToryaliOmary/passwort-frontend/actions/workflows/ci.yml)
 # passwort-frontend
 
 ## Project setup
